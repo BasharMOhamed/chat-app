@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.get("/user", authenticate, getUsersForSidebar);
+router.get("/users", authenticate, getUsersForSidebar);
 
 router.get("/:id", authenticate, getMessages);
 

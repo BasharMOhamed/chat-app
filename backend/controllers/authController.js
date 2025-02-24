@@ -64,6 +64,7 @@ const updateProfile = async (req, res) => {
         .json({ message: "Please select a profile picture" });
     }
     const uploadResponse = await cloudinary.uploader.upload(profilePic);
+    // console.log(uploadResponse.secure_url);
     const user = await User.findByIdAndUpdate(
       _id,
       { profilePic: uploadResponse.secure_url },
