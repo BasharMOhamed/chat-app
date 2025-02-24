@@ -4,7 +4,8 @@ const generateToken = require("../lib/utils");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const userRegister = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { fullname, email, password } = req.body;
+  console.log(email, password, fullname);
   try {
     if (password.length < 6) {
       return res
@@ -17,7 +18,7 @@ const userRegister = async (req, res) => {
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ fullname, email, password: hashedPassword });
     generateToken(newUser._id, res);
     await newUser.save();
     res.status(201).json(newUser);
