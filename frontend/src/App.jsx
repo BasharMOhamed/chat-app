@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 // import axios from "axios";
 import { Loader } from "lucide-react";
 function App() {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
@@ -25,7 +25,7 @@ function App() {
       </div>
     );
   }
-  console.log(authUser);
+  console.log(onlineUsers);
   return (
     <div>
       <Navbar />

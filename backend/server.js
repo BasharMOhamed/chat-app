@@ -6,10 +6,9 @@ const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const { app, server } = require("./lib/socket");
 dotenv.config();
-connectDB();
-
-const app = express();
+// const app = express();
 
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
@@ -23,6 +22,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log("Server is running on port 3000");
+  connectDB();
 });
