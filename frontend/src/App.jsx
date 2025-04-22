@@ -11,9 +11,10 @@ import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 // import axios from "axios";
 import { Loader } from "lucide-react";
+import { useThemeStore } from "./store/useThemeStore";
 function App() {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
-
+  const { theme } = useThemeStore();
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
@@ -27,7 +28,7 @@ function App() {
   }
   console.log(onlineUsers);
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route
