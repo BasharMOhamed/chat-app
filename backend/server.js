@@ -23,7 +23,9 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
-  connectDB();
-});
+// server.listen(3000, () => {
+//   console.log("Server is running on port 3000");
+//   connectDB();
+// });
+
+module.exports = app;
